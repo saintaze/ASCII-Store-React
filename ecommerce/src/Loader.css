@@ -1,0 +1,22 @@
+.Loader {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 100%;
+  border: 6px solid #ccc;
+  border-right-color: #888888;
+  position: fixed;
+  left: 50%;
+  top: 38%;
+  z-index: 4;
+  transform: translate(-50%, -50%); 
+  animation: rotate .5s linear infinite;
+}
+
+@keyframes rotate{
+  0% {
+
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

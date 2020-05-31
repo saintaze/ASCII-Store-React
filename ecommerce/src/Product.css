@@ -1,5 +1,4 @@
 .Product {
-  background-color: #f7f7f7;
   background-color: white;
   padding: 1.6rem 2.1rem;
   border: 1px solid lightgray;
@@ -13,7 +12,6 @@
   transform: scale(1.01);
   box-shadow: 0 4px 6px rgba(0,0,0,0.12), 0 4px 6px rgba(0,0,0,0.24); 
 }
-
 
 .Product-info {
   display: flex;
@@ -32,17 +30,20 @@
   font-size: 2.3rem;
 }
 
+.Product-px {
+  display: inline-block;
+  margin-left: .2rem;
+}
+
 .Product-left {
   flex-grow: 1;
 }
 
 .Product-right {
   margin-left: 1rem;
-}
-
-.Product-px {
-  display: inline-block;
-  margin-left: .2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .Product-price {
@@ -66,5 +67,6 @@
 
 .Product-date {
   color: slategray;
-  margin-top: .2rem;
+  margin-top: .1rem;
+  font-size: 1.5rem;
 }
