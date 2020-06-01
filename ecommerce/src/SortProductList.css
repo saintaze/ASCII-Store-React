@@ -1,0 +1,43 @@
+.select-dropdown {
+  position: relative;
+  background-color: lemonchiffon;
+  width: 15rem;
+  margin-bottom: 3rem;
+  border-radius: 2px;
+  cursor: pointer;
+  border: 1px solid #e2dca1;
+
+}
+
+.select-dropdown select {
+  color: saddlebrown;
+  width: 15rem;
+  font-family: inherit;
+  font-size: 1.9rem;
+  font-weight: 400;
+  max-width: 100%;
+  padding: .6rem 2.4rem .6rem 1rem;
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+
+}
+.select-dropdown select:active, .select-dropdown select:focus {
+  outline: none;
+  box-shadow: none;
+}
+.select-dropdown:after {
+  content: " ";
+  position: absolute;
+  top: 50%;
+  margin-top: -2px;
+  right: 8px;
+  width: 0;
+  height: 0;
+  border-left: .5rem solid transparent;
+  border-right: .5rem solid transparent;
+  border-top: .5rem solid saddlebrown;
+}

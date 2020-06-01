@@ -9,12 +9,12 @@ const Ad = props => {
   return (
     <div className="Ad">
       {/* <div class="Ad-placeholder">Ad</div>  */}
-      {loaded || <div class="Ad-placeholder">Ad</div>}
+      {/* {loaded || <div class="Ad-placeholder">Ad</div>} */}
       <img
         className="Ad-image"
-        style={loaded ? {} : { display: 'none' }}
+        // style={loaded ? {} : { display: 'none' }}
         src={`http://localhost:3000/ads/?r=${imageId}`}
-        onLoad={() => setLoaded(true)}
+        // onLoad={() => setLoaded(true)}
       />
     </div>
   );

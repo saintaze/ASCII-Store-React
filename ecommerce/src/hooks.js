@@ -1,5 +1,7 @@
 import { useEffect } from "react";
 import { pageActions } from './reducers';
+import { PRODUCT_LIMIT } from './constants';
+
 
 export const useLazyLoad = (scrollRef, dispatch) => {
   const scrollObserver = node => {
@@ -8,7 +10,7 @@ export const useLazyLoad = (scrollRef, dispatch) => {
       changes.forEach(c => {
         if (c.intersectionRatio > 0) {
           dispatch({ type: pageActions.INCREMENT_PAGE })
-          productsLength += 12
+          productsLength += PRODUCT_LIMIT; 
           if (productsLength >= 500) observer.unobserve(node);
           console.log(productsLength)
         }

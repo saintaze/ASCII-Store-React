@@ -6,7 +6,7 @@
   border-right-color: #888888;
   position: fixed;
   left: 50%;
-  top: 38%;
+  top: 45%;
   z-index: 4;
   transform: translate(-50%, -50%); 
   animation: rotate .5s linear infinite;

@@ -13,16 +13,16 @@
   color: saddlebrown;
 }
 
-@media screen and (max-width: 1050px){
+@media screen and (max-width: 1000px){
   .ProductList{
     grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2.2rem;
   }
 }
 
 @media screen and (max-width: 756px){
   .ProductList{
     grid-template-columns: repeat(1, 1fr);
+    grid-gap: 2rem;
   }
-
-  
 }

@@ -2,3 +2,11 @@
   max-width: 105rem;
   margin: 0 auto;
 }
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+  font-size: 4rem;
+  margin: 8rem 0;
+  color: navy;
+}

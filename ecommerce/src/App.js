@@ -7,9 +7,7 @@ import ProductList from './ProductList';
 function App() {
   return (
     <div className="App">
-      <div style={{backgroundColor: 'red', width: '40px', height: '40px'}}></div>
-      <div>Hello to everyone</div>
-      <Ad />
+      <h1>ASCII Store</h1>
       <ProductList />
     </div>
   );

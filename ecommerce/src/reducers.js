@@ -1,7 +1,9 @@
 export const productsActions = {
   FETCHED_ALL: 'FETCHED_ALL',
   LOADING: 'LOADING',
-  MERGE_PRODUCTS: 'MERGE_PRODUCTS'
+  MERGE_PRODUCTS: 'MERGE_PRODUCTS',
+  SORT_PRODUCTS: 'SORT_PRODUCTS',
+  RESET_PRODUCTS: 'RESET_PRODUCTS'
 }
 
 export const pageActions = {
@@ -16,6 +18,10 @@ export const productsReducer = (state, action) => {
       return { ...state, products: [...state.products, ...action.products] };
     case productsActions.FETCHED_ALL:
       return { ...state, fetchedAll: action.fetchedAll }
+    case productsActions.SORT_PRODUCTS:
+      return { ...state, sort: action.sort };
+    case productsActions.RESET_PRODUCTS:
+      return { ...state, products: [] };
     default:
       return state
   }
