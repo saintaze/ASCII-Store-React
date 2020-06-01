@@ -17,9 +17,9 @@ A store for viewing ASCII faces.
 ### Getting Started
 clone repo
 
-`cd` into folder and run `npm install && npm start`
-`cd ecommerce` and run `npm install && npm start`
-Open browser with `port 3001 || 3000`
++ `cd` into folder and run `npm install && npm start`
++ `cd ecommerce` and run `npm install && npm start`
++ Open browser with `port 3001 || 3000`
 
 run `npm start`
 
