@@ -10,6 +10,17 @@ export const pageActions = {
   INCREMENT_PAGE: 'INCREMENT_PAGE'
 }
 
+export const productsInitialState = { 
+  products: [], 
+  loading: false, 
+  fetchedAll: false, 
+  sort: 'id' 
+};
+
+export const paginateInitialState = { 
+  page: 1 
+};
+
 export const productsReducer = (state, action) => {
   switch (action.type) {
     case productsActions.LOADING:
@@ -35,3 +46,8 @@ export const paginateReducer = (state, action) => {
       return state
   }
 }
+
+
+
+
+// sort means reset page, reset, feathedall, reset prodcuts

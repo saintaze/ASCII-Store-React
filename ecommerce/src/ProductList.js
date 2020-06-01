@@ -3,20 +3,26 @@ import Product from './Product';
 import Loader from './Loader';
 import Ad from './Ad';
 import ScrollRef from './ScrollRef';
+import SortProductList from './SortProductList';
 
-import {productsActions, productsReducer, paginateReducer} from './reducers';
 import { useLazyLoad } from './hooks';
 import {PRODUCT_LIMIT, AD_AFTER_PRODUCTS} from './constants';
 
+import { 
+  productsActions, 
+  productsReducer, 
+  paginateReducer, 
+  productsInitialState,
+  paginateInitialState
+} from './reducers';
+
 import './ProductList.css';
-import SortProductList from './SortProductList';
 
 
 const ProductList = props => {
-  const productsState = { products: [], loading: false, fetchedAll: false, sort: 'id'};
-  const paginateState = { page: 1 };
-  const [productsData, productsDispatch] = useReducer(productsReducer, productsState);
-  const [paginate, paginateDispatch] = useReducer(paginateReducer, paginateState);
+  
+  const [productsData, productsDispatch] = useReducer(productsReducer, productsInitialState);
+  const [paginate, paginateDispatch] = useReducer(paginateReducer, paginateInitialState);
   const scrollRef = useRef(null);
   let sortRef = useRef();
 
@@ -37,7 +43,7 @@ const ProductList = props => {
     console.log(productsData.products)
   }
 
-  useLazyLoad(scrollRef, paginateDispatch);
+  useLazyLoad(scrollRef, paginateDispatch, [productsData.sort]);
   
   useEffect(() => {
     getProducts();

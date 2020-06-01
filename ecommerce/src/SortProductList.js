@@ -5,8 +5,8 @@ import './SortProductList.css';
 const SortProductList = ({handleSort}) => {
   return ( 
     <div className="select-dropdown">
-      <select onChange={handleSort}>
-        <option selected disabled>Sort</option>
+      <select defaultValue='Sort' onChange={handleSort}>
+        <option disabled>Sort</option>
         <option value="size">Size</option>
         <option value="price">Price</option>
         <option value="id">Id</option>

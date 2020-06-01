@@ -3,8 +3,9 @@ import { pageActions } from './reducers';
 import { PRODUCT_LIMIT } from './constants';
 
 
-export const useLazyLoad = (scrollRef, dispatch) => {
+export const useLazyLoad = (scrollRef, dispatch, dependencies) => {
   const scrollObserver = node => {
+    console.log('called')
     let productsLength = 0;
     const observer = new IntersectionObserver(changes => {
       changes.forEach(c => {
@@ -16,11 +17,12 @@ export const useLazyLoad = (scrollRef, dispatch) => {
           console.log(productsLength)
         }
       });
-    }, {rootMargin: '500px 0px'});
+    }, {rootMargin: '700px 0px'});
     observer.observe(node);
   }
   useEffect(() => {
+    console.log('DEPEND', dependencies)
     if (scrollRef.current) scrollObserver(scrollRef.current);
-  }, []);
+  }, dependencies);
 }
 

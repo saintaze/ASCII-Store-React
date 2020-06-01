@@ -5,14 +5,13 @@ import './Ad.css';
 const Ad = props => {
   const [loaded, setLoaded] = useState(false);
   const imageIdRef = useRef()
-  
+
   useEffect(() => {
     imageIdRef.current = Math.floor(Math.random() * 1000);
   }, []);
 
   return (
     <div className="Ad">
-      {/* <div class="Ad-placeholder">Ad</div>  */}
       {loaded || <div class="Ad-placeholder">Ad</div>}
       <img
         className="Ad-image"
