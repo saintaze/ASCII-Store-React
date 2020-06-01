@@ -1,20 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
 import './Ad.css';
 
 const Ad = props => {
-  const imageId = Math.floor(Math.random() * 1000);
   const [loaded, setLoaded] = useState(false);
+  const imageIdRef = useRef()
+  
+  useEffect(() => {
+    imageIdRef.current = Math.floor(Math.random() * 1000);
+  }, []);
 
   return (
     <div className="Ad">
       {/* <div class="Ad-placeholder">Ad</div>  */}
-      {/* {loaded || <div class="Ad-placeholder">Ad</div>} */}
+      {loaded || <div class="Ad-placeholder">Ad</div>}
       <img
         className="Ad-image"
-        // style={loaded ? {} : { display: 'none' }}
-        src={`http://localhost:3000/ads/?r=${imageId}`}
-        // onLoad={() => setLoaded(true)}
+        style={loaded ? {} : { display: 'none' }}
+        src={`http://localhost:3000/ads/?r=${imageIdRef.current}`}
+        onLoad={() => setLoaded(true)}
       />
     </div>
   );

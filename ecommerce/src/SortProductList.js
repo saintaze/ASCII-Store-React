@@ -4,7 +4,7 @@ import './SortProductList.css';
 
 const SortProductList = ({handleSort}) => {
   return ( 
-    <div class="select-dropdown">
+    <div className="select-dropdown">
       <select onChange={handleSort}>
         <option selected disabled>Sort</option>
         <option value="size">Size</option>
