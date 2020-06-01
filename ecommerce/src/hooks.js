@@ -8,6 +8,7 @@ export const useLazyLoad = (scrollRef, dispatch) => {
     let productsLength = 0;
     const observer = new IntersectionObserver(changes => {
       changes.forEach(c => {
+        console.log(c)
         if (c.intersectionRatio > 0) {
           dispatch({ type: pageActions.INCREMENT_PAGE })
           productsLength += PRODUCT_LIMIT; 
