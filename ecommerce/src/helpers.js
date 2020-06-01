@@ -1,4 +1,4 @@
-const getDuration = (timeAgoInSeconds) => {
+const getDuration = timeAgoInSeconds => {
   const epochs = [
     ['year', 31536000],
     ['month', 2592000],

@@ -1,15 +1,13 @@
 import React from 'react';
+import { convertCentToDollar, timeAgo } from './helpers';
 
 import './Product.css';
-import { convertCentToDollar, timeAgo } from './helpers';
 
 const Product = ({product}) => {
   const faceStyle = {
     fontSize: product.size,
     fontWeight: product.size <= 26 ? '900' : '700'
   }
-
-
 
   return ( 
     <div className="Product">

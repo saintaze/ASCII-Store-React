@@ -16,7 +16,7 @@ export const useLazyLoad = (scrollRef, dispatch) => {
           console.log(productsLength)
         }
       });
-    });
+    }, {rootMargin: '500px 0px'});
     observer.observe(node);
   }
   useEffect(() => {
