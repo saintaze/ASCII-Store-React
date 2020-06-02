@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { paramsActions, productsActions } from './reducers';
 import { TOTAL_PRODUCTS } from './constants';
 
 
 export const useLazyLoad = (scrollRef, dispatch) => {
-  const scrollObserver = node => {
+  const scrollObserver = useCallback(node => {
     const observer = new IntersectionObserver(changes => {
       changes.forEach(c => {
         if (c.intersectionRatio > 0) {
@@ -13,11 +13,11 @@ export const useLazyLoad = (scrollRef, dispatch) => {
       });
     }, {rootMargin: '500px 0px'});
     observer.observe(node);
-  }
+  }, [dispatch]);
   
   useEffect(() => {
     if (scrollRef.current) scrollObserver(scrollRef.current);
-  }, [scrollRef]);
+  }, [scrollObserver, scrollRef]);
 }
 
 export const useFetch = (url, params, productsData, productsDispatch) => { 
