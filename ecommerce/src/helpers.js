@@ -1,3 +1,5 @@
+import { SERVER_PORT } from './constants';
+
 const getDuration = (timeAgoInSeconds) => {
   const epochs = [
     ['year', 31536000],
@@ -25,7 +27,7 @@ export const timeAgo = (date) => {
 export const convertCentToDollar = price => price / 100
 
 export var getApiUrl = (params) => {
-  const BASE_URL = 'http://localhost:3000/api/products';
+  const BASE_URL = `http://localhost:${SERVER_PORT}/api/products`;
   let paramsString = '';
   let paramsKeys = Object.keys(params);
   paramsKeys.forEach((k, i) => {
