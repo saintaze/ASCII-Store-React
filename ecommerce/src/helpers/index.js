@@ -23,3 +23,14 @@ export const timeAgo = (date) => {
 };
 
 export const convertCentToDollar = price => price / 100
+
+export var getApiUrl = (params) => {
+  const BASE_URL = 'http://localhost:3000/api/products';
+  let paramsString = '';
+  let paramsKeys = Object.keys(params);
+  paramsKeys.forEach((k, i) => {
+    paramsString += `${k}=${params[k]}`;
+    if (i !== paramsKeys.length - 1) paramsString += '&';
+  })
+  return `${BASE_URL}?${paramsString}`;
+}

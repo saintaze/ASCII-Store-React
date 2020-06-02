@@ -1,62 +1,45 @@
-import React, { useEffect, useRef, useReducer } from 'react';
+import React, { useRef, useReducer } from 'react';
 import Product from './Product';
 import Loader from './Loader';
 import Ad from './Ad';
 import ScrollRef from './ScrollRef';
 import SortProductList from './SortProductList';
 
-import { useLazyLoad } from './hooks';
-import {PRODUCT_LIMIT, AD_AFTER_PRODUCTS} from './constants';
+import { useLazyLoad, useFetch } from './hooks';
+import { getApiUrl } from './helpers';
+import { AD_AFTER_PRODUCTS } from './constants';
 
 import { 
   productsActions, 
-  productsReducer, 
-  paginateReducer, 
+  productsReducer,
+  paramsActions, 
+  paramsReducer, 
   productsInitialState,
-  paginateInitialState
+  paramsInitialState
 } from './reducers';
 
 import './ProductList.css';
 
-
 const ProductList = props => {
   
   const [productsData, productsDispatch] = useReducer(productsReducer, productsInitialState);
-  const [paginate, paginateDispatch] = useReducer(paginateReducer, paginateInitialState);
+  const [params, paramsDispatch] = useReducer(paramsReducer, paramsInitialState);
+  const url = getApiUrl(params);
   const scrollRef = useRef(null);
-  let sortRef = useRef();
-
-  const getProducts = async () => {
-    const url = `http://localhost:3000/api/products?_page=${paginate.page}&_limit=${PRODUCT_LIMIT}&_sort=${productsData.sort}`
-    productsDispatch({type: productsActions.LOADING, loading: true});
-    const res = await fetch(url);
-    const fetchedProducts = await res.json();
-    if(sortRef.current){
-      productsDispatch({type: productsActions.RESET_PRODUCTS})
-      sortRef.current = false;
-    }
-    productsDispatch({type: productsActions.MERGE_PRODUCTS, products: fetchedProducts });
-    productsDispatch({type: productsActions.LOADING, loading: false });
-    if (productsData.products.length >= 500){
-      productsDispatch({ type: productsActions.FETCHED_ALL, fetchedAll: true })
-    }
-    console.log(productsData.products)
-  }
-
-  useLazyLoad(scrollRef, paginateDispatch, [productsData.sort]);
   
-  useEffect(() => {
-    getProducts();
-  }, [paginate.page, productsData.sort]);
+  useFetch(url, params, productsData, productsDispatch);
+  useLazyLoad(scrollRef, paramsDispatch);
 
   const handleSort = (e) => {
-    sortRef.current = true;
-    productsDispatch({type: productsActions.SORT_PRODUCTS, sort: e.target.value})
+    productsDispatch({ type: productsActions.FETCHED_ALL, fetchedAll: false })
+    productsDispatch({ type: productsActions.RESET_PRODUCTS })
+    paramsDispatch({ type: paramsActions.RESET_PAGE })
+    paramsDispatch({ type: paramsActions.SORT_PAGE, sort: e.target.value })
   }
 
   const renderProductsAndAds = () => {
     return productsData.products.map((p ,i) => {
-      let showAd = i > 0 && i % AD_AFTER_PRODUCTS === 0;
+      const showAd = i > 0 && i % AD_AFTER_PRODUCTS === 0;
       return (
         <React.Fragment key={i}>
           {showAd && <Ad />}
@@ -82,15 +65,3 @@ const ProductList = props => {
 export default ProductList;
 
 
-
-// function Counter() {
-//   const [count, setCount] = useState(0);
-
-//   const prevCountRef = useRef();
-//   useEffect(() => {
-//     prevCountRef.current = count;
-//   });
-//   const prevCount = prevCountRef.current;
-
-//   return <h1>Now: {count}, before: {prevCount}</h1>;
-// }

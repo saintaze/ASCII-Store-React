@@ -1,28 +1,41 @@
 import { useEffect } from "react";
-import { pageActions } from './reducers';
-import { PRODUCT_LIMIT } from './constants';
+import { paramsActions, productsActions } from './reducers';
+import { TOTAL_PRODUCTS } from './constants';
 
 
-export const useLazyLoad = (scrollRef, dispatch, dependencies) => {
+export const useLazyLoad = (scrollRef, dispatch) => {
   const scrollObserver = node => {
-    console.log('called')
-    let productsLength = 0;
     const observer = new IntersectionObserver(changes => {
       changes.forEach(c => {
-        console.log(c)
         if (c.intersectionRatio > 0) {
-          dispatch({ type: pageActions.INCREMENT_PAGE })
-          productsLength += PRODUCT_LIMIT; 
-          if (productsLength >= 500) observer.unobserve(node);
-          console.log(productsLength)
+          dispatch({ type: paramsActions.INCREMENT_PAGE })
         }
       });
-    }, {rootMargin: '700px 0px'});
+    }, {rootMargin: '0px 0px'});
     observer.observe(node);
   }
+  
   useEffect(() => {
-    console.log('DEPEND', dependencies)
     if (scrollRef.current) scrollObserver(scrollRef.current);
-  }, dependencies);
+  }, [scrollRef]);
 }
 
+export const useFetch = (url, params, productsData, productsDispatch) => { 
+  const fetchProducts = async (url, productsDispatch) => {
+    productsDispatch({ type: productsActions.LOADING, loading: true });
+    const res = await fetch(url);
+    const fetchedProducts = await res.json();
+    productsDispatch({ type: productsActions.MERGE_PRODUCTS, products: fetchedProducts });
+    productsDispatch({ type: productsActions.LOADING, loading: false });
+  }
+
+  useEffect(() => {
+    if (!productsData.fetchedAll) fetchProducts(url, productsDispatch);
+  }, [params._page, params._sort]);
+
+  useEffect(() => {
+    if (productsData.products.length >= TOTAL_PRODUCTS) {
+      productsDispatch({ type: productsActions.FETCHED_ALL, fetchedAll: true })
+    }
+  }, [productsData.products.length])
+}

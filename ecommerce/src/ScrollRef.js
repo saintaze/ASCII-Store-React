@@ -2,8 +2,8 @@ import React from 'react';
 
 const ScrollRef = ({productsLength, selector}) => {
   const styles = {
-    marginTop: productsLength ? '6rem' : '100vh',
-    border: '1px solid red'
+    border: '1px solid red',
+    display: productsLength ? 'block' : 'none'
   }
 
   return <div className="ScrollRef" style={styles} ref={selector} />

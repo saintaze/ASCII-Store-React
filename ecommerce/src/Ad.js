@@ -12,8 +12,9 @@ const Ad = props => {
 
   return (
     <div className="Ad">
-      {loaded || <div class="Ad-placeholder">Ad</div>}
+      {loaded || <div className="Ad-placeholder">Ad</div>}
       <img
+        alt="Ad"
         className="Ad-image"
         style={loaded ? {} : { display: 'none' }}
         src={`http://localhost:3000/ads/?r=${imageIdRef.current}`}

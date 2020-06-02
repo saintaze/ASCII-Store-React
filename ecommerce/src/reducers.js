@@ -1,24 +1,28 @@
+import { PRODUCT_LIMIT } from './constants';
+
 export const productsActions = {
   FETCHED_ALL: 'FETCHED_ALL',
   LOADING: 'LOADING',
   MERGE_PRODUCTS: 'MERGE_PRODUCTS',
-  SORT_PRODUCTS: 'SORT_PRODUCTS',
   RESET_PRODUCTS: 'RESET_PRODUCTS'
 }
 
-export const pageActions = {
-  INCREMENT_PAGE: 'INCREMENT_PAGE'
+export const paramsActions = {
+  INCREMENT_PAGE: 'INCREMENT_PAGE',
+  RESET_PAGE: 'RESET_PAGE',
+  SORT_PAGE: 'SORT_PAGE'
 }
 
 export const productsInitialState = { 
   products: [], 
   loading: false, 
-  fetchedAll: false, 
-  sort: 'id' 
+  fetchedAll: false
 };
 
-export const paginateInitialState = { 
-  page: 1 
+export const paramsInitialState = { 
+  _page: 1,
+  _limit: PRODUCT_LIMIT,
+  _sort: 'id'
 };
 
 export const productsReducer = (state, action) => {
@@ -29,8 +33,6 @@ export const productsReducer = (state, action) => {
       return { ...state, products: [...state.products, ...action.products] };
     case productsActions.FETCHED_ALL:
       return { ...state, fetchedAll: action.fetchedAll }
-    case productsActions.SORT_PRODUCTS:
-      return { ...state, sort: action.sort };
     case productsActions.RESET_PRODUCTS:
       return { ...state, products: [] };
     default:
@@ -38,16 +40,16 @@ export const productsReducer = (state, action) => {
   }
 }
 
-export const paginateReducer = (state, action) => {
+export const paramsReducer = (state, action) => {
   switch (action.type) {
-    case pageActions.INCREMENT_PAGE:
-      return { ...state, page: state.page + 1 }
+    case paramsActions.INCREMENT_PAGE:
+      return { ...state, _page: state._page + 1 };
+    case paramsActions.RESET_PAGE:
+      return { ...state, _page: 1 };
+    case paramsActions.SORT_PAGE:
+      return { ...state, _sort: action.sort };
     default:
       return state
   }
 }
 
-
-
-
-// sort means reset page, reset, feathedall, reset prodcuts
