@@ -8,7 +8,7 @@ export const useLazyLoad = (scrollRef, dispatch) => {
     const observer = new IntersectionObserver(changes => {
       changes.forEach(c => {
         if (c.intersectionRatio > 0) {
-          dispatch({ type: paramsActions.INCREMENT_PAGE })
+          dispatch({ type: paramsActions.INCREMENT_PAGE });
         }
       });
     }, {rootMargin: '0px 0px'});

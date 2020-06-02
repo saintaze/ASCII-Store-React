@@ -1,4 +1,4 @@
-const getDuration = timeAgoInSeconds => {
+const getDuration = (timeAgoInSeconds) => {
   const epochs = [
     ['year', 31536000],
     ['month', 2592000],
@@ -32,7 +32,5 @@ export var getApiUrl = (params) => {
     paramsString += `${k}=${params[k]}`;
     if (i !== paramsKeys.length - 1) paramsString += '&';
   })
-  return `${BASE_URL}?${paramsString}`; 
+  return `${BASE_URL}?${paramsString}`;
 }
-
-
