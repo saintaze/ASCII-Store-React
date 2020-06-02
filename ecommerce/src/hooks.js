@@ -31,11 +31,11 @@ export const useFetch = (url, params, productsData, productsDispatch) => {
 
   useEffect(() => {
     if (!productsData.fetchedAll) fetchProducts(url, productsDispatch);
-  }, [params._page, params._sort]);
+  }, [params._page, params._sort, url, productsDispatch, productsData.fetchedAll]);
 
   useEffect(() => {
     if (productsData.products.length >= TOTAL_PRODUCTS) {
       productsDispatch({ type: productsActions.FETCHED_ALL, fetchedAll: true })
     }
-  }, [productsData.products.length])
+  }, [productsData.products.length, productsDispatch])
 }

@@ -31,7 +31,6 @@ const ProductList = props => {
   useLazyLoad(scrollRef, paramsDispatch);
 
   const handleSort = (e) => {
-    console.log('clicked', e.target.value)
     productsDispatch({ type: productsActions.FETCHED_ALL, fetchedAll: false })
     productsDispatch({ type: productsActions.RESET_PRODUCTS })
     paramsDispatch({ type: paramsActions.RESET_PAGE })
