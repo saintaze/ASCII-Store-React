@@ -11,7 +11,7 @@ export const useLazyLoad = (scrollRef, dispatch) => {
           dispatch({ type: paramsActions.INCREMENT_PAGE });
         }
       });
-    }, {rootMargin: '0px 0px'});
+    }, {rootMargin: '500px 0px'});
     observer.observe(node);
   }
   

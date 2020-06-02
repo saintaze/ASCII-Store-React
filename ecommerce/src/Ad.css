@@ -4,10 +4,13 @@
   place-self: center;
   min-height: 20rem;
   cursor: pointer;
+  overflow: hidden;
 }
 
 .Ad-image {
+  height: 20rem;
   display: block;
+  object-fit: contain; 
 }
 
 .Ad-placeholder {

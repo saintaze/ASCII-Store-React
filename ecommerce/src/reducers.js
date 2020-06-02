@@ -22,7 +22,7 @@ export const productsInitialState = {
 export const paramsInitialState = { 
   _page: 1,
   _limit: PRODUCT_LIMIT,
-  _sort: 'id'
+  _sort: 'price'
 };
 
 export const productsReducer = (state, action) => {
