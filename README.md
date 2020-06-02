@@ -3,7 +3,7 @@ A store for viewing ASCII faces.
 
 ### Features
 + Responsive Design
-+ Lazy Laoading of Data
++ Lazy Loading of Data
 + Sorting functionality
 + Loader Animation
 + Time Ago in Words function
@@ -14,14 +14,15 @@ A store for viewing ASCII faces.
 + CSS3
 + React
 
+![ASCII Face Products](https://img.techpowerup.org/200602/screenshot-2020-06-02-at-2-46-50-pm.png)
+
 ### Getting Started
 clone repo
 
 + `cd` into folder and run `npm install && npm start`
 + `cd ecommerce` and run `npm install && npm start`
-+ Open browser with `port 3001 || 3000`
-
-run `npm start`
++ Note which port react app is running on (e.g. 3001)
++ Open Broswer with that port `http://localhost:{port}/`
 
 # Author
 Saintaze [@saintaze](https://github.com/saintaze/)
